@@ -72,7 +72,6 @@ const VideoCarousel = () => {
                   : "4vw", // laptop
             });
 
-            // set the background color of the progress bar
             gsap.to(span[videoId], {
               width: `${currentProgress}%`,
               backgroundColor: "white",
@@ -80,7 +79,6 @@ const VideoCarousel = () => {
           }
         },
 
-        // when the video is ended, replace the progress bar with the indicator and change the background color
         onComplete: () => {
           if (isPlaying) {
             gsap.to(videoDivRef.current[videoId], {
@@ -97,7 +95,6 @@ const VideoCarousel = () => {
         anim.restart();
       }
 
-      // update the progress bar
       const animUpdate = () => {
         anim.progress(
           videoRef.current[videoId].currentTime /
@@ -106,10 +103,8 @@ const VideoCarousel = () => {
       };
 
       if (isPlaying) {
-        // ticker to update the progress bar
         gsap.ticker.add(animUpdate);
       } else {
-        // remove the ticker when the video is paused (progress bar is stopped)
         gsap.ticker.remove(animUpdate);
       }
     }
@@ -206,7 +201,7 @@ const VideoCarousel = () => {
               ref={(el) => (videoDivRef.current[i] = el)}
             >
               <span
-                className="absolute h-full w-full rounded-full"
+                className="absolute h-full w-full rounded-full "
                 ref={(el) => (videoSpanRef.current[i] = el)}
               />
             </span>
